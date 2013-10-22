@@ -1,5 +1,7 @@
-#!flask/bin/python
+#! /usr/bin/python
 
+# boiler-plate script that initializes the database
+# can basically copy-and-paste to a new project
 from migrate.versioning import api
 from config import SQLALCHEMY_DATABASE_URI
 from config import SQLALCHEMY_MIGRATE_REPO
