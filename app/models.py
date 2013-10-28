@@ -11,9 +11,28 @@ class User(db.Model):
 	nickname = db.Column(db.String(64), index = True, unique = True)
 	email = db.Column(db.String(120), index = True, unique = True)
 	role = db.Column(db.SmallInteger, default = ROLE_USER)
+	
 	# following field is added to link users to posts they write
-	# this is not an actual db field
+	# this is not an actual db field, but allows you to get all posts for an "author"
 	posts = db.relationship('Post', backref = 'author', lazy = 'dynamic')
+	
+	# the following are functions required by Flast-Login
+	
+	# misleadingly named; should be true unless user is not allowed to authenticate
+	def is_authenticated(self):
+		return True
+	
+	# generally should be true, unless a user has been banned
+	def is_active(self):
+		return True
+	
+	# returns True only when user should not be allowed to login (e.g. banned)	
+	def is_anonymous(self):
+		return False
+	
+	# self-explanatory
+	def get_id(self):
+		return unicode(self.id)
 	
 	# tells Python how to print objects of this class
 	# useful for debugging
