@@ -1,4 +1,5 @@
 from app import db
+from hashlib import md5
 
 # "models" are where you store info about the database schema (how info is stored and retrieved)
 
@@ -33,6 +34,11 @@ class User(db.Model):
 	# self-explanatory
 	def get_id(self):
 		return unicode(self.id)
+		
+	# uses a special url request to gravatar that returns the image
+	# request takes the form of an MD5 hash of user's email (plus add'l args like d and s)
+	def avatar(self, size):
+		return 'http://www.gravatar.com/avatar/' + md5(self.email).hexdigest() + '?d=mm&s=' + str(size)
 	
 	# tells Python how to print objects of this class
 	# useful for debugging
