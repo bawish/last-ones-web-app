@@ -12,7 +12,9 @@ class User(db.Model):
 	nickname = db.Column(db.String(64), index = True, unique = True)
 	email = db.Column(db.String(120), index = True, unique = True)
 	role = db.Column(db.SmallInteger, default = ROLE_USER)
-	
+	about_me = db.Column(db.String(140))
+	last_seen = db.Column(db.DateTime)
+		
 	# following field is added to link users to posts they write
 	# this is not an actual db field, but allows you to get all posts for an "author"
 	posts = db.relationship('Post', backref = 'author', lazy = 'dynamic')
