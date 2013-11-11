@@ -1,11 +1,17 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		{% if title %}
 		<title>{{title}} - microblog</title>
 		{% else %}
 		<title>microblog</title>
 		{% endif%}
+		<!-- Link to stylesheets and scripts -->
+		<link href="/static/css/bootstrap.min.css" rel="stylsheet" media="screen">
+		<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src ="/static/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	
 	<body>
